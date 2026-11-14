@@ -1,0 +1,64 @@
+theme: hugo-tufte
+languageCode: en-US
+baseurl: "https://mayursrinivasan.github.io/"
+title: "Mayur Srinivasan"
+canonifyurls: true
+
+pagination:
+  pagerSize: 10
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    guessSyntax: true
+
+params:
+  subtitle: "Marketing Analytics & Data Science, Austin TX"
+  favicon: "/favicon.ico"
+  touchicon: "/apple-touch-icon-144-precomposed.png"
+  codeblocksdark: false
+  marginNoteInd: "⊕"
+  copyrightHolder: "Mayur Srinivasan"
+  showPoweredBy: false
+  hidedate: false
+  showSummary: true
+  math: true
+  KaTeXVersion: 0.16.4
+  KaTeXCDN: "//cdn.jsdelivr.net/npm"
+  sansSubtitle: false
+  centerArticle: false
+
+  github: mayursrinivasan
+  linkedin: mayursrinivasan
+  twitter: xrinivasan
+
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+
+menu:
+  nav:
+    - name: Home
+      weight: -110
+      identifier: home
+      url: /
+    - name: Posts
+      weight: -100
+      identifier: posts
+      url: /posts/
+    - name: Categories
+      weight: -90
+      identifier: categories
+      url: /categories/
+    - name: About
+      weight: -80
+      identifier: about
+      url: /about/
+    - name: CV
+      weight: -70
+      identifier: cv
+      url: /MayurSrinivasanResume.pdf
