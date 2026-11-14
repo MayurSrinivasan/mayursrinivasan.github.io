@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article id="main">
+  {{ if eq .Section "posts" }}
+  <nav class="back-link"><a href="{{ "posts/" | relURL }}">← All posts</a></nav>
+  {{ end }}
+  {{ partial "content_header.html" . }}
+  {{ partial "toc.html" . }}
+  <section>{{ .Content }}</section>
+  <section>{{ partial "footer.html" . }}</section>
+  <section>{{ partial "nav.html" . }}</section>
+</article>
+{{ end }}

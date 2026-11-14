@@ -1,0 +1,22 @@
+/* Site-level overrides for hugo-tufte */
+
+/* "← All posts" link at the top-left of each post */
+.back-link {
+  margin: 0 0 -2.5rem 0;
+}
+
+.back-link a {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a7466;
+  text-decoration: none;
+  background: none;
+  text-shadow: none;
+  transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+  color: #a00000;
+}
