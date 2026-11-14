@@ -5,8 +5,7 @@ build:
   list: never
 ---
 
-Marketing Analytics & Data Science, Austin TX.
+Marketing Analytics & Data Science, Berkeley CA.
 
-- [CV / Resume](/MayurSrinivasanResume.pdf)
 - [GitHub](https://github.com/mayursrinivasan)
 - [LinkedIn](https://linkedin.com/in/mayursrinivasan)

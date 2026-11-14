@@ -16,7 +16,7 @@ markup:
     guessSyntax: true
 
 params:
-  subtitle: "Marketing Analytics & Data Science, Austin TX"
+  subtitle: "Marketing Analytics & Data Science, Berkeley CA"
   favicon: "/favicon.ico"
   touchicon: "/apple-touch-icon-144-precomposed.png"
   codeblocksdark: false
@@ -58,7 +58,3 @@ menu:
       weight: -80
       identifier: about
       url: /about/
-    - name: CV
-      weight: -70
-      identifier: cv
-      url: /MayurSrinivasanResume.pdf
