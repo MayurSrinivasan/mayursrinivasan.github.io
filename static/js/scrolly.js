@@ -2,10 +2,7 @@
   function renderMath(el) {
     if (window.renderMathInElement) {
       window.renderMathInElement(el, {
-        delimiters: [
-          { left: "$$", right: "$$", display: true },
-          { left: "$", right: "$", display: false }
-        ],
+        delimiters: [{ left: "$", right: "$", display: false }],
         throwOnError: false
       });
     }
@@ -13,30 +10,48 @@
 
   function initScrolly(root) {
     var steps = Array.prototype.slice.call(root.querySelectorAll(".scrolly__step"));
-    var imgs = Array.prototype.slice.call(root.querySelectorAll(".scrolly__frame img"));
-    var bars = Array.prototype.slice.call(root.querySelectorAll(".scrolly__progress span"));
+    var panels = Array.prototype.slice.call(root.querySelectorAll(".scrolly__panel"));
     var label = root.querySelector(".scrolly__hud-label");
     var formula = root.querySelector(".scrolly__hud-formula");
     var count = root.querySelector(".scrolly__hud-count");
+    var progress = root.querySelector(".scrolly__progress");
+    progress.innerHTML = steps.map(function () { return "<span></span>"; }).join("");
+    var bars = Array.prototype.slice.call(progress.children);
     var current = -1;
+    var currentPanel = null;
 
     function activate(i) {
-      if (i === current || i < 0) return;
+      if (i === current) return;
       current = i;
       var step = steps[i];
       steps.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
-      var imgIdx = step.getAttribute("data-img");
-      imgs.forEach(function (img) { img.classList.toggle("is-active", img.getAttribute("data-img") === imgIdx); });
       bars.forEach(function (b, k) { b.classList.toggle("is-done", k <= i); });
-      label.textContent = step.getAttribute("data-label");
+
+      var pid = step.getAttribute("data-panel");
+      panels.forEach(function (p) {
+        var on = p.getAttribute("data-panel") === pid;
+        p.classList.toggle("is-active", on);
+        if (on && pid !== currentPanel) {
+          p.dispatchEvent(new CustomEvent("panel:enter"));
+        }
+      });
+      currentPanel = pid;
+
+      label.textContent = "Step " + (i + 1) + " of " + steps.length + " · " + step.getAttribute("data-label");
       formula.textContent = "$" + step.getAttribute("data-formula") + "$";
       count.textContent = step.getAttribute("data-count");
       renderMath(formula);
     }
 
-    // Pick the step whose center is closest to the viewport midpoint.
+    // Activate the step whose center is closest to the middle of the visible
+    // reading area (below the sticky graphic when it's stacked on top, on phones).
+    var graphic = root.querySelector(".scrolly__graphic");
     function onScroll() {
-      var mid = window.innerHeight * 0.5;
+      var top = 0;
+      if (window.matchMedia("(max-width: 700px)").matches) {
+        top = Math.max(0, graphic.getBoundingClientRect().bottom);
+      }
+      var mid = top + (window.innerHeight - top) * 0.4;
       var best = 0, bestDist = Infinity;
       steps.forEach(function (s, k) {
         var r = s.getBoundingClientRect();
@@ -54,14 +69,14 @@
       }
     }, { passive: true });
     window.addEventListener("resize", onScroll);
+    onScroll();
 
-    // Wait for KaTeX to be available for the HUD formula.
+    // KaTeX loads with `defer`; re-render the HUD formula once it's ready.
     var tries = 0;
     (function waitForKatex() {
-      if (window.renderMathInElement || tries > 50) { current = -1; onScroll(); return; }
-      tries++; setTimeout(waitForKatex, 100);
+      if (window.renderMathInElement) { renderMath(formula); return; }
+      if (tries++ < 60) setTimeout(waitForKatex, 100);
     })();
-    onScroll();
   }
 
   function boot() {

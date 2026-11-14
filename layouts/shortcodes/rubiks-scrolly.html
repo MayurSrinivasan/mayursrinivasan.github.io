@@ -2,55 +2,123 @@
 <div class="scrolly" id="rubiks-scrolly">
   <div class="scrolly__graphic">
     <div class="scrolly__frame">
-      <img src="{{ "images/rubiks/01-anatomy.jpg" | relURL }}" alt="Exploded Rubik's Cube showing 6 centers, 8 corners and 12 edges" data-img="0" class="is-active">
-      <img src="{{ "images/rubiks/02-corners.jpg" | relURL }}" alt="Eight corner cubies, one showing its three twist orientations" data-img="1">
-      <img src="{{ "images/rubiks/03-edges.jpg" | relURL }}" alt="Twelve edge cubies, one showing its two flip orientations" data-img="2">
-      <img src="{{ "images/rubiks/04-parity.jpg" | relURL }}" alt="A quarter turn cycling four corners and four edges at once" data-img="3">
-      <img src="{{ "images/rubiks/05-scale.jpg" | relURL }}" alt="A ribbon of cubes spiralling out into a miniature cosmos" data-img="4">
+      <img class="scrolly__panel is-active" data-panel="anatomy" src="{{ "images/rubiks/01-anatomy.jpg" | relURL }}" alt="Exploded Rubik's Cube showing 6 centers, 8 corners and 12 edges">
+      <div class="scrolly__panel w-panel" data-panel="slots" data-widget="slots">
+        <div class="w-title">8 corner pieces → 8 corner spots</div>
+        <div class="w-label">Pieces still in the pile</div>
+        <div class="w-tray"></div>
+        <div class="w-label">Corner spots &nbsp;·&nbsp; number = choices you had for that spot</div>
+        <div class="w-slots"></div>
+        <div class="w-product">&nbsp;</div>
+        <button class="w-btn" type="button">↻ Replay</button>
+      </div>
+      <div class="scrolly__panel w-panel" data-panel="twists" data-widget="twists">
+        <div class="w-title">One corner, three ways to sit</div>
+        <div class="w-row w-twists"></div>
+        <div class="w-note">Follow the white sticker: it can face up, or be turned ⅓ or ⅔ of the way round.</div>
+      </div>
+      <div class="scrolly__panel w-panel" data-panel="balance" data-widget="balance">
+        <div class="w-title">A front-face turn, seen from the front</div>
+        <div class="w-square">
+          <svg class="w-square-arrow" viewBox="-60 -60 120 120" aria-hidden="true"><path d="M 0 -42 A 42 42 0 1 1 -36.4 -21" fill="none" stroke="#c9c3b2" stroke-width="5" stroke-linecap="round"/><path d="M -46 -30 L -36.4 -21 L -24 -27" fill="none" stroke="#c9c3b2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="w-readout">&nbsp;</div>
+        <button class="w-btn" type="button">↻ Turn the front face</button>
+      </div>
+      <div class="scrolly__panel w-panel" data-panel="lastcorner" data-widget="lastcorner">
+        <div class="w-title">Tap the first 7 corners to twist them</div>
+        <div class="w-grid w-grid--corners"></div>
+        <div class="w-readout">&nbsp;</div>
+        <div class="w-btns"><button class="w-btn" data-act="random" type="button">🎲 Shuffle</button><button class="w-btn" data-act="reset" type="button">Reset</button></div>
+      </div>
+      <img class="scrolly__panel" data-panel="edges" src="{{ "images/rubiks/03-edges.jpg" | relURL }}" alt="Twelve edge cubies, one showing its two flip orientations">
+      <div class="scrolly__panel w-panel" data-panel="lastedge" data-widget="lastedge">
+        <div class="w-title">Tap the first 11 edges to flip them</div>
+        <div class="w-grid w-grid--edges"></div>
+        <div class="w-readout">&nbsp;</div>
+        <div class="w-btns"><button class="w-btn" data-act="turn" type="button">↻ Front-face turn (flips 4)</button><button class="w-btn" data-act="reset" type="button">Reset</button></div>
+      </div>
+      <img class="scrolly__panel" data-panel="parity" src="{{ "images/rubiks/04-parity.jpg" | relURL }}" alt="A quarter turn cycling four corners and four edges at once">
+      <img class="scrolly__panel" data-panel="scale" src="{{ "images/rubiks/05-scale.jpg" | relURL }}" alt="A ribbon of cubes spiralling out into a miniature cosmos">
     </div>
     <div class="scrolly__hud">
-      <span class="scrolly__hud-label">Step 1 of 5 · The fixed core</span>
+      <span class="scrolly__hud-label">&nbsp;</span>
       <span class="scrolly__hud-formula"></span>
-      <span class="scrolly__hud-count">1 configuration</span>
-      <div class="scrolly__progress"><span class="is-done"></span><span></span><span></span><span></span><span></span></div>
+      <span class="scrolly__hud-count">&nbsp;</span>
+      <div class="scrolly__progress"></div>
     </div>
   </div>
   <div class="scrolly__steps">
-    <div class="scrolly__step is-active" data-img="0" data-label="Step 1 of 5 · The fixed core" data-formula="1" data-count="1 configuration">
+    <div class="scrolly__step is-active" data-panel="anatomy" data-label="The fixed core" data-formula="1" data-count="1 way">
       <div class="scrolly__card">
         <h3>1. The six centers never move</h3>
-        <p>A 3×3×3 cube looks like 27 little cubes, but the very middle is just a plastic axle. Bolted to it are <strong>6 center pieces</strong>, one sticker each.</p>
-        <p>Face turns only <em>spin</em> the centers in place: white is always opposite yellow, red opposite orange, blue opposite green. Turning the whole cube in your hand isn't a new scramble, so the centers contribute a factor of exactly $1$.</p>
+        <p>A Rubik's Cube looks like 27 little cubes, but the very middle is just a plastic axle. Attached to it are <strong>6 center pieces</strong>, one sticker each.</p>
+        <p>Turning a face only <em>spins</em> its center in place. White is always opposite yellow, red opposite orange, blue opposite green. So the centers add nothing to the count. That leaves two kinds of pieces to think about: <strong>8 corners</strong> (3 stickers each) and <strong>12 edges</strong> (2 stickers each).</p>
       </div>
     </div>
-    <div class="scrolly__step" data-img="1" data-label="Step 2 of 5 · Corners" data-formula="8! \times 3^{7}" data-count="88,179,840 corner states">
+    <div class="scrolly__step" data-panel="slots" data-label="Where can the corners go?" data-formula="8!" data-count="40,320 arrangements">
       <div class="scrolly__card">
-        <h3>2. Eight corners, and a mod-3 lock</h3>
-        <p>There are <strong>8 corner cubies</strong>, each with 3 stickers. They can be shuffled into the 8 corner slots in $8! = 40{,}320$ ways.</p>
-        <p>Each corner can also sit in 3 twists, suggesting $3^8$ orientations. But every turn twists corners in a balanced way, so the total twist is always $0 \pmod 3$. Choose the first 7 twists freely and the 8th is forced: only $3^7 = 2{,}187$ are reachable.</p>
+        <h3>2. Eight corner spots: why “8!”?</h3>
+        <p>Forget twisting for now. A cube has 8 corner <em>spots</em> and 8 corner <em>pieces</em>. In how many orders can the pieces fill the spots?</p>
+        <p>Fill the spots one at a time. The first spot can take <strong>any of the 8</strong> pieces. Now one is used up, so the second spot has <strong>7</strong> to choose from, the third has <strong>6</strong>, and so on, until the last spot simply gets the <strong>1</strong> piece that's left.</p>
+        <p>Every choice can pair with every later choice, so we multiply: $8 \times 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 40{,}320$. That “count down and multiply” has a name: $8!$, read “8 factorial”.</p>
+        <p>Sanity check with 3 pieces A, B, C: $3 \times 2 \times 1 = 6$, and indeed there are exactly six orders: ABC, ACB, BAC, BCA, CAB, CBA.</p>
       </div>
     </div>
-    <div class="scrolly__step" data-img="2" data-label="Step 3 of 5 · Edges" data-formula="8! \times 3^{7} \times 12! \times 2^{11}" data-count="86,504,006,548,979,712,000 (before parity)">
+    <div class="scrolly__step" data-panel="twists" data-label="How can each corner sit?" data-formula="8! \times 3^{8}" data-count="264,539,520 (if corners twisted freely)">
       <div class="scrolly__card">
-        <h3>3. Twelve edges, and a mod-2 lock</h3>
-        <p>Between the corners sit <strong>12 edge cubies</strong> with 2 stickers each, which can be arranged in $12! = 479{,}001{,}600$ ways.</p>
-        <p>Each edge can be flipped 2 ways, suggesting $2^{12}$ orientations. Yet turns always flip edges in even numbers, so the total flip is $0 \pmod 2$. The last edge is forced by the other 11, leaving $2^{11} = 2{,}048$.</p>
+        <h3>3. Each corner can sit three ways</h3>
+        <p>A corner has 3 stickers, so once it's in a spot it can be rotated <strong>3 ways</strong>. Track its white (or yellow) sticker: facing up, turned ⅓ of the way round, or turned ⅔ of the way.</p>
+        <p>If all 8 corners could twist freely, that's $3 \times 3 \times 3 \times 3 \times 3 \times 3 \times 3 \times 3 = 3^8 = 6{,}561$ twist patterns for every arrangement.</p>
+        <p>But here's the catch: the cube's mechanism won't let you twist just one corner.</p>
       </div>
     </div>
-    <div class="scrolly__step" data-img="3" data-label="Step 4 of 5 · Parity" data-formula="\dfrac{8! \times 3^{7} \times 12! \times 2^{11}}{2}" data-count="43,252,003,274,489,856,000 reachable">
+    <div class="scrolly__step" data-panel="balance" data-label="Turns twist in balance" data-formula="+\tfrac13 - \tfrac13 + \tfrac13 - \tfrac13 = 0" data-count="Total twist never changes">
       <div class="scrolly__card">
-        <h3>4. The parity lock: divide by two</h3>
-        <p>One quarter turn moves <strong>4 corners</strong> in a cycle <em>and</em> <strong>4 edges</strong> in a cycle. A 4-cycle is three swaps, which makes it an <em>odd</em> permutation.</p>
-        <p>So every turn flips corner parity and edge parity <em>together</em>, and they must always match. You can never swap just two corners on their own; two edges must swap too. Exactly half the arrangements vanish.</p>
+        <h3>4. Every turn twists corners in balance</h3>
+        <p>Let's measure twist in <strong>thirds of a turn</strong>. Watch what one turn of the front face does to the 4 corners it carries (press the button to turn again).</p>
+        <p>Two of them get twisted <strong>forward ⅓</strong> and the other two get twisted <strong>back ⅓</strong>. Add it up: $+\tfrac13 - \tfrac13 + \tfrac13 - \tfrac13 = 0$. The forward twists and backward twists cancel exactly.</p>
+        <p>Every side face works like this, and turning the top or bottom doesn't twist corners at all. So <strong>no move can change the total twist</strong>. A solved cube starts at 0, so the twists of all 8 corners must always add up to a <em>whole number of turns</em>: 0, 3, 6 … thirds.</p>
       </div>
     </div>
-    <div class="scrolly__step" data-img="4" data-label="Step 5 of 5 · Scale" data-formula="\approx 4.33 \times 10^{19}" data-count="43,252,003,274,489,856,000">
+    <div class="scrolly__step" data-panel="lastcorner" data-label="The last corner is forced" data-formula="8! \times 3^{7}" data-count="88,179,840 corner states">
       <div class="scrolly__card">
-        <h3>5. Forty-three quintillion</h3>
+        <h3>5. So the last corner has no choice</h3>
+        <p>Pretend you could set the first 7 corners however you like. <strong>Tap them in the picture</strong> to twist them.</p>
+        <p>The 8th corner is then locked in. It must bring the total up to a whole number of turns, so it twists <em>itself</em> to whatever is needed. Try it and watch.</p>
+        <p>Only 7 corners are really free, so twisting gives $3^7 = 2{,}187$ patterns, not $3^8$. Two out of every three twist patterns are impossible.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-panel="edges" data-label="The 12 edges" data-formula="8! \times 3^{7} \times 12! \times 2^{12}" data-count="173,008,013,097,959,424,000 (if edges flipped freely)">
+      <div class="scrolly__card">
+        <h3>6. Twelve edges: same idea</h3>
+        <p>Edges work just like corners. There are 12 edge spots, filled one at a time: 12 choices, then 11, then 10 … so $12 \times 11 \times \cdots \times 1 = 12! = 479{,}001{,}600$ arrangements.</p>
+        <p>An edge has 2 stickers, so it can sit 2 ways: <strong>the right way round, or flipped</strong>. If every edge could flip freely, that's $2^{12} = 4{,}096$ flip patterns.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-panel="lastedge" data-label="The last edge is forced" data-formula="8! \times 3^{7} \times 12! \times 2^{11}" data-count="86,504,006,548,979,712,000">
+      <div class="scrolly__card">
+        <h3>7. …and the last edge has no choice either</h3>
+        <p>A front or back turn flips <strong>exactly 4 edges</strong> at once, and every other turn flips none. Flipping 4 at a time can never turn an even count odd, so the number of flipped edges is <strong>always even</strong>: 0, 2, 4, 6 …</p>
+        <p><strong>Tap any of the first 11 edges</strong> to flip it. The 12th flips itself whenever it has to, to keep the count even. Now press the face-turn button: 4 edges flip at once and the 12th doesn't move, because the count stays even.</p>
+        <p>So only 11 edges are free: $2^{11} = 2{,}048$ flip patterns.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-panel="parity" data-label="Swaps come in pairs" data-formula="\dfrac{8! \times 3^{7} \times 12! \times 2^{11}}{2}" data-count="43,252,003,274,489,856,000 reachable">
+      <div class="scrolly__card">
+        <h3>8. One last lock: divide by 2</h3>
+        <p>Every quarter turn moves 4 corners around a loop <strong>and</strong> 4 edges around a loop, both at the same time. Corners and edges always get reshuffled together.</p>
+        <p>The upshot: you can never swap just two corners and leave everything else alone. Two edges always have to swap too. That rules out exactly <strong>half</strong> of the arrangements.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-panel="scale" data-label="Forty-three quintillion" data-formula="\approx 4.33 \times 10^{19}" data-count="43,252,003,274,489,856,000">
+      <div class="scrolly__card">
+        <h3>9. Forty-three quintillion</h3>
         <p>Multiply it all out and you get <strong>43,252,003,274,489,856,000</strong> reachable states.</p>
         <p>Make one 57&nbsp;mm cube for every state, line them up, and the row stretches about <strong>260 light-years</strong>, more than halfway to Polaris.</p>
       </div>
     </div>
   </div>
 </div>
+<script src="{{ "js/rubiks-widgets.js" | relURL }}"></script>
 <script src="{{ "js/scrolly.js" | relURL }}"></script>
