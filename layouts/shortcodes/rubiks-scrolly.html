@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="{{ "css/scrolly.css" | relURL }}">
+<div class="scrolly" id="rubiks-scrolly">
+  <div class="scrolly__graphic">
+    <div class="scrolly__frame">
+      <img src="{{ "images/rubiks/01-anatomy.jpg" | relURL }}" alt="Exploded Rubik's Cube showing 6 centers, 8 corners and 12 edges" data-img="0" class="is-active">
+      <img src="{{ "images/rubiks/02-corners.jpg" | relURL }}" alt="Eight corner cubies, one showing its three twist orientations" data-img="1">
+      <img src="{{ "images/rubiks/03-edges.jpg" | relURL }}" alt="Twelve edge cubies, one showing its two flip orientations" data-img="2">
+      <img src="{{ "images/rubiks/04-parity.jpg" | relURL }}" alt="A quarter turn cycling four corners and four edges at once" data-img="3">
+      <img src="{{ "images/rubiks/05-scale.jpg" | relURL }}" alt="A ribbon of cubes spiralling out into a miniature cosmos" data-img="4">
+    </div>
+    <div class="scrolly__hud">
+      <span class="scrolly__hud-label">Step 1 of 5 · The fixed core</span>
+      <span class="scrolly__hud-formula"></span>
+      <span class="scrolly__hud-count">1 configuration</span>
+      <div class="scrolly__progress"><span class="is-done"></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="scrolly__steps">
+    <div class="scrolly__step is-active" data-img="0" data-label="Step 1 of 5 · The fixed core" data-formula="1" data-count="1 configuration">
+      <div class="scrolly__card">
+        <h3>1. The six centers never move</h3>
+        <p>A 3×3×3 cube looks like 27 little cubes, but the very middle is just a plastic axle. Bolted to it are <strong>6 center pieces</strong>, one sticker each.</p>
+        <p>Face turns only <em>spin</em> the centers in place: white is always opposite yellow, red opposite orange, blue opposite green. Turning the whole cube in your hand isn't a new scramble, so the centers contribute a factor of exactly $1$.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-img="1" data-label="Step 2 of 5 · Corners" data-formula="8! \times 3^{7}" data-count="88,179,840 corner states">
+      <div class="scrolly__card">
+        <h3>2. Eight corners, and a mod-3 lock</h3>
+        <p>There are <strong>8 corner cubies</strong>, each with 3 stickers. They can be shuffled into the 8 corner slots in $8! = 40{,}320$ ways.</p>
+        <p>Each corner can also sit in 3 twists, suggesting $3^8$ orientations. But every turn twists corners in a balanced way, so the total twist is always $0 \pmod 3$. Choose the first 7 twists freely and the 8th is forced: only $3^7 = 2{,}187$ are reachable.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-img="2" data-label="Step 3 of 5 · Edges" data-formula="8! \times 3^{7} \times 12! \times 2^{11}" data-count="86,504,006,548,979,712,000 (before parity)">
+      <div class="scrolly__card">
+        <h3>3. Twelve edges, and a mod-2 lock</h3>
+        <p>Between the corners sit <strong>12 edge cubies</strong> with 2 stickers each, which can be arranged in $12! = 479{,}001{,}600$ ways.</p>
+        <p>Each edge can be flipped 2 ways, suggesting $2^{12}$ orientations. Yet turns always flip edges in even numbers, so the total flip is $0 \pmod 2$. The last edge is forced by the other 11, leaving $2^{11} = 2{,}048$.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-img="3" data-label="Step 4 of 5 · Parity" data-formula="\dfrac{8! \times 3^{7} \times 12! \times 2^{11}}{2}" data-count="43,252,003,274,489,856,000 reachable">
+      <div class="scrolly__card">
+        <h3>4. The parity lock: divide by two</h3>
+        <p>One quarter turn moves <strong>4 corners</strong> in a cycle <em>and</em> <strong>4 edges</strong> in a cycle. A 4-cycle is three swaps, which makes it an <em>odd</em> permutation.</p>
+        <p>So every turn flips corner parity and edge parity <em>together</em>, and they must always match. You can never swap just two corners on their own; two edges must swap too. Exactly half the arrangements vanish.</p>
+      </div>
+    </div>
+    <div class="scrolly__step" data-img="4" data-label="Step 5 of 5 · Scale" data-formula="\approx 4.33 \times 10^{19}" data-count="43,252,003,274,489,856,000">
+      <div class="scrolly__card">
+        <h3>5. Forty-three quintillion</h3>
+        <p>Multiply it all out and you get <strong>43,252,003,274,489,856,000</strong> reachable states.</p>
+        <p>Make one 57&nbsp;mm cube for every state, line them up, and the row stretches about <strong>260 light-years</strong>, more than halfway to Polaris.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ "js/scrolly.js" | relURL }}"></script>
