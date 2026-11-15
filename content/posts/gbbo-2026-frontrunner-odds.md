@@ -1,5 +1,5 @@
 ---
-title: "Is Bake Off 2026's Frontrunner the Most Dominant Ever?"
+title: "Front-Runners Don't Always Win GBBO"
 date: 2026-11-14T23:17:11-08:00
 math: false
 meta: true
