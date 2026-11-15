@@ -1,0 +1,282 @@
+<figure class="gbbo-viz" aria-label="Comparison of Bake Off frontrunners entering the semi-finals">
+  <style>
+    .gbbo-viz {
+      margin: 2rem 0;
+      padding: 1.25rem 1.35rem;
+      background: #f8f5ec;
+      border: 1px solid #e3dccb;
+      border-radius: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1c1b18;
+      max-width: 680px;
+    }
+    .gbbo-viz-header {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e3dccb;
+      padding-bottom: 0.7rem;
+    }
+    .gbbo-viz-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.2rem 0;
+      color: #111;
+    }
+    .gbbo-viz-sub {
+      font-size: 0.78rem;
+      color: #5b574e;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .gbbo-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .gbbo-row {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 0.9rem;
+      align-items: center;
+      padding: 0.7rem 0.8rem;
+      background: #fffff8;
+      border: 1px solid #eae4d4;
+      border-radius: 6px;
+    }
+    .gbbo-row.is-current {
+      border-color: #c98a1b;
+      box-shadow: 0 1px 0 rgba(201, 138, 27, 0.14);
+    }
+    .gbbo-avatar-wrap {
+      position: relative;
+      width: 56px;
+      height: 56px;
+    }
+    .gbbo-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border: 2.5px solid #d4cbb8;
+      background: #e9e3d3;
+    }
+    .gbbo-row.is-won .gbbo-avatar { border-color: #2e7d4f; }
+    .gbbo-row.is-runner .gbbo-avatar { border-color: #b84a39; }
+    .gbbo-row.is-current .gbbo-avatar { border-color: #c98a1b; }
+
+    .gbbo-info {
+      min-width: 0;
+    }
+    .gbbo-name-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+    .gbbo-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #111;
+    }
+    .gbbo-season {
+      font-size: 0.74rem;
+      color: #6b665c;
+      font-variant-numeric: tabular-nums;
+    }
+    .gbbo-dots-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .gbbo-metric-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b665c;
+      font-weight: 600;
+    }
+    .gbbo-dots {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .gbbo-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #c98a1b;
+      display: inline-block;
+    }
+    .gbbo-dot.is-empty {
+      background: transparent;
+      border: 1.5px dashed #cfc7b4;
+      width: 10px;
+      height: 10px;
+    }
+    .gbbo-count {
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: #111;
+    }
+    .gbbo-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.73rem;
+      color: #4b473f;
+    }
+    .gbbo-chip {
+      background: #f2ede0;
+      padding: 0.14rem 0.45rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .gbbo-chip.is-yes {
+      background: #e3f1e8;
+      color: #1f5c39;
+      font-weight: 600;
+    }
+    .gbbo-chip.is-no {
+      background: #f7e6e3;
+      color: #8f3325;
+      font-weight: 600;
+    }
+    .gbbo-outcome {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .gbbo-outcome.won {
+      background: #e3f1e8;
+      color: #1f5c39;
+    }
+    .gbbo-outcome.runner {
+      background: #f7e6e3;
+      color: #8f3325;
+    }
+    .gbbo-outcome.current {
+      background: #fbf1da;
+      color: #8f5c07;
+    }
+    .gbbo-viz-foot {
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      color: #6b665c;
+      line-height: 1.35;
+    }
+    @media (max-width: 540px) {
+      .gbbo-row {
+        grid-template-columns: 48px 1fr;
+      }
+      .gbbo-avatar-wrap, .gbbo-avatar {
+        width: 48px;
+        height: 48px;
+      }
+      .gbbo-outcome {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+    }
+  </style>
+
+  <div class="gbbo-viz-header">
+    <p class="gbbo-viz-title">Frontrunners Entering the Semi-Finals (After Episode 8)</p>
+    <p class="gbbo-viz-sub">Star Baker counts, quarter-final momentum, and round accolades before Episode 9.</p>
+  </div>
+
+  <div class="gbbo-rows">
+    <div class="gbbo-row is-won">
+      <div class="gbbo-avatar-wrap">
+        <img class="gbbo-avatar" src="https://champions-speakers.co.uk/sites/default/files/2025-11/jasmine%20mitchell.jpg" alt="Jasmine Mitchell" loading="lazy">
+      </div>
+      <div class="gbbo-info">
+        <div class="gbbo-name-line">
+          <span class="gbbo-name">Jasmine Mitchell</span>
+          <span class="gbbo-season">Series 16 · 2025</span>
+        </div>
+        <div class="gbbo-dots-row">
+          <span class="gbbo-metric-label">Star Bakers</span>
+          <span class="gbbo-dots" aria-label="4 Star Bakers">
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+          </span>
+          <span class="gbbo-count">4</span>
+        </div>
+        <div class="gbbo-meta-tags">
+          <span class="gbbo-chip is-yes">Won Ep 8 Qtr-Final</span>
+          <span class="gbbo-chip">Won 5th SB in Semis</span>
+        </div>
+      </div>
+      <div class="gbbo-outcome won">Won Series</div>
+    </div>
+
+    <div class="gbbo-row is-runner">
+      <div class="gbbo-avatar-wrap">
+        <img class="gbbo-avatar" src="https://richardburr.co.uk/wp-content/uploads/2016/09/promo-pic-2.jpg" alt="Richard Burr" loading="lazy">
+      </div>
+      <div class="gbbo-info">
+        <div class="gbbo-name-line">
+          <span class="gbbo-name">Richard Burr</span>
+          <span class="gbbo-season">Series 5 · 2014</span>
+        </div>
+        <div class="gbbo-dots-row">
+          <span class="gbbo-metric-label">Star Bakers</span>
+          <span class="gbbo-dots" aria-label="4 Star Bakers">
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+          </span>
+          <span class="gbbo-count">4</span>
+        </div>
+        <div class="gbbo-meta-tags">
+          <span class="gbbo-chip is-yes">Won Ep 8 Qtr-Final</span>
+          <span class="gbbo-chip">Won 5th SB in Semis</span>
+        </div>
+      </div>
+      <div class="gbbo-outcome runner">Runner-Up</div>
+    </div>
+
+    <div class="gbbo-row is-current">
+      <div class="gbbo-avatar-wrap">
+        <img class="gbbo-avatar" src="https://i2-prod.examinerlive.co.uk/article34582478.ece/ALTERNATES/s1200f/1_01M1YKYZDJEVS7SECW6K1X648C.jpg" alt="Tom Whittaker" loading="lazy">
+      </div>
+      <div class="gbbo-info">
+        <div class="gbbo-name-line">
+          <span class="gbbo-name">Tom Whittaker</span>
+          <span class="gbbo-season">Series 17 · 2026</span>
+        </div>
+        <div class="gbbo-dots-row">
+          <span class="gbbo-metric-label">Star Bakers</span>
+          <span class="gbbo-dots" aria-label="3 Star Bakers">
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot"></span>
+            <span class="gbbo-dot is-empty"></span>
+          </span>
+          <span class="gbbo-count">3</span>
+        </div>
+        <div class="gbbo-meta-tags">
+          <span class="gbbo-chip is-no">Ep 8 Qtr-Final: Moyin won</span>
+          <span class="gbbo-chip">2+ Technicals · 1+ Handshake</span>
+        </div>
+      </div>
+      <div class="gbbo-outcome current">In Progress</div>
+    </div>
+  </div>
+
+  <p class="gbbo-viz-foot">Note: Counts reflect totals after Episode 8, before the Episode 9 semi-final. Dashed circle indicates 1 fewer Star Baker than the all-time semi-final pace.</p>
+</figure>
