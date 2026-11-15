@@ -20,3 +20,95 @@
 .back-link a:hover {
   color: #a00000;
 }
+
+/* ---------------------------------------------------------------------- */
+/* Phones, tablets & narrow windows (≤1000px): center everything with     */
+/* equal side margins. The theme keeps a 12.5% LEFT-only body padding at   */
+/* every width, which pushes content off-center on smaller screens.        */
+/* ---------------------------------------------------------------------- */
+@media (max-width: 1000px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  article {
+    padding: 2.5rem 0;
+  }
+
+  article h1,
+  article h2,
+  article h3,
+  article p,
+  article ul,
+  article ol,
+  article dl,
+  article footer,
+  article figure,
+  article blockquote,
+  article details,
+  .content-title,
+  .page-footer {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  article ul,
+  article ol {
+    padding-left: 1.4rem;
+  }
+
+  /* Sidenotes can't live in a right margin any more: tap the number to expand */
+  .sidenote,
+  .marginnote {
+    display: none;
+  }
+
+  .margin-toggle:checked + .sidenote,
+  .margin-toggle:checked + .marginnote {
+    display: block;
+    float: none;
+    clear: both;
+    width: 100%;
+    margin: 0.8rem 0;
+    padding: 0.6rem 0.9rem;
+    box-sizing: border-box;
+    border-left: 2px solid #d8d2c0;
+    background: rgba(0, 0, 0, 0.02);
+    position: relative;
+  }
+
+  label.margin-toggle {
+    cursor: pointer;
+  }
+
+  /* Long display equations scroll inside their own box instead of the page */
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 760px) {
+  h1.content-title {
+    font-size: 2.4rem;
+    margin-top: 2rem;
+  }
+
+  .back-link {
+    margin-bottom: -1rem;
+  }
+}

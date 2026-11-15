@@ -2,7 +2,6 @@ theme: hugo-tufte
 languageCode: en-US
 baseurl: "https://mayursrinivasan.github.io/"
 title: "Mayur Srinivasan"
-canonifyurls: true
 
 pagination:
   pagerSize: 10

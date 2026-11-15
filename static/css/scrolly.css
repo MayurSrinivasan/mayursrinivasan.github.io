@@ -366,7 +366,9 @@ img.scrolly__panel.is-active {
 
 /* ================= Mobile ================= */
 @media (max-width: 700px) {
-  .scrolly { grid-template-columns: 1fr; gap: 0; }
+  .scrolly { grid-template-columns: 1fr; gap: 0; margin-left: auto; margin-right: auto; }
+  .scrolly__card p { margin-left: 0; margin-right: 0; }
+  .w-panel > * { margin-left: auto; margin-right: auto; }
   .scrolly__graphic {
     top: 0;
     height: auto;
