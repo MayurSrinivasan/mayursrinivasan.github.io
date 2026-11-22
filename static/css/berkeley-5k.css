@@ -1,0 +1,478 @@
+/* ================= Berkeley 5K Scrollytelling Visual Essay ================= */
+/* Matches the warm Tufte palette (#fffff8 paper, #a00000 crimson, #7a7466 ink) */
+
+.b5k-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.6rem 0 0.5rem 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+.b5k-nav button {
+  font: inherit;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  padding: 0.32rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid #d8d2c0;
+  background: #fffff8;
+  color: #5c574b;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.b5k-nav button:hover {
+  border-color: #a00000;
+  color: #111;
+}
+
+.b5k-nav button.is-active {
+  background: #a00000;
+  border-color: #a00000;
+  color: #fffff8;
+  font-weight: 600;
+}
+
+.b5k-scrolly {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.82fr);
+  gap: 2.6rem;
+  width: 100%;
+  max-width: 1120px;
+  margin: 1.5rem 0 3.5rem 0;
+  align-items: start;
+}
+
+.b5k-graphic {
+  position: sticky;
+  top: 4vh;
+}
+
+.b5k-stage {
+  background: #fbf8ec;
+  border: 1px solid #e3dccb;
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem 1.1rem 1.35rem;
+  box-shadow: 0 18px 40px rgba(40, 30, 10, 0.09);
+  box-sizing: border-box;
+}
+
+.b5k-stage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #e6e0ce;
+}
+
+.b5k-kicker {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a7466;
+}
+
+.b5k-title {
+  margin: 0.2rem 0 0 0 !important;
+  font-family: et-book, Palatino, "Palatino Linotype", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.45rem !important;
+  line-height: 1.2;
+  color: #1c1b18;
+  width: auto !important;
+}
+
+.b5k-metric {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #a00000;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding-top: 0.15rem;
+}
+
+.b5k-controls {
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+.b5k-controls.is-open {
+  display: flex;
+}
+
+.b5k-ctrl-label {
+  font-size: 0.8rem;
+  color: #7a7466;
+  margin-right: 0.2rem;
+}
+
+.b5k-ctrl-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #cfc8b4;
+  background: #fffff8;
+  color: #4f4a40;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.b5k-ctrl-btn.is-mono {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.78rem;
+  padding: 0.18rem 0.52rem;
+}
+
+.b5k-ctrl-btn:hover {
+  border-color: #a00000;
+  color: #111;
+}
+
+.b5k-ctrl-btn.is-active {
+  background: #a00000;
+  border-color: #a00000;
+  color: #fffff8;
+  font-weight: 600;
+}
+
+.b5k-viz-wrap {
+  width: 100%;
+  background: #fffff8;
+  border: 1px solid #ece6d5;
+  border-radius: 10px;
+  padding: 0.35rem 0.25rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.b5k-viz {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.b5k-viz .sans {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+.b5k-viz .mono {
+  font-family: Consolas, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.b5k-stage-foot {
+  margin-top: 0.75rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+.b5k-foot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #6b665c;
+  line-height: 1.35;
+}
+
+.b5k-step-num {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.82rem;
+  color: #7a7466;
+  white-space: nowrap;
+}
+
+.b5k-progress {
+  display: flex;
+  gap: 5px;
+  margin-top: 0.55rem;
+}
+
+.b5k-progress span {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: #e3dcc8;
+  transition: background 0.35s ease;
+}
+
+.b5k-progress span.is-done {
+  background: #a00000;
+}
+
+/* Narrative step cards */
+.b5k-steps {
+  padding: 12vh 0 28vh 0;
+}
+
+.b5k-step {
+  min-height: 74vh;
+  display: flex;
+  align-items: center;
+}
+
+.b5k-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fffff8;
+  border: 1px solid #e6e2d3;
+  border-left: 3px solid #d8d2c0;
+  border-radius: 10px;
+  padding: 1.35rem 1.55rem;
+  opacity: 0.32;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.b5k-step.is-active .b5k-card {
+  opacity: 1;
+  transform: translateY(0);
+  border-left-color: #a00000;
+  box-shadow: 0 10px 28px rgba(40, 30, 10, 0.07);
+}
+
+.b5k-card h3 {
+  margin: 0 0 0.6rem 0 !important;
+  font-size: 1.48rem !important;
+  line-height: 1.25;
+  width: 100% !important;
+  color: #111;
+}
+
+.b5k-card p {
+  width: 100% !important;
+  max-width: none !important;
+  font-size: 1.18rem !important;
+  line-height: 1.62 !important;
+  margin: 0.55rem 0 !important;
+  color: #222;
+}
+
+.b5k-card .b5k-accent {
+  color: #a00000;
+  font-weight: 700;
+}
+
+.b5k-card .b5k-mono {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.92em;
+}
+
+/* Floating Tooltip */
+.b5k-tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  background: #fffff8;
+  border: 1px solid #cfc8b4;
+  border-radius: 8px;
+  padding: 0.6rem 0.78rem;
+  box-shadow: 0 10px 24px rgba(40, 30, 10, 0.16);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #2b2620;
+  max-width: 265px;
+}
+
+.b5k-tooltip.is-visible {
+  opacity: 1;
+}
+
+.b5k-tip-title {
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.25rem;
+}
+
+.b5k-tip-rows {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.78rem;
+  color: #5c574b;
+}
+
+.b5k-tip-rows strong {
+  color: #111;
+}
+
+.b5k-tip-me {
+  margin-top: 0.35rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid #ece6d5;
+  color: #a00000;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Complete Reference Table below scrolly */
+.b5k-ref-wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin: 1.2rem 0 2.2rem 0;
+  overflow-x: auto;
+  border: 1px solid #e3dccb;
+  border-radius: 10px;
+  background: #fffff8;
+}
+
+.b5k-ref-table {
+  width: 100% !important;
+  max-width: none !important;
+  border-collapse: collapse;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 0.9rem;
+  margin: 0 !important;
+}
+
+.b5k-ref-table th {
+  text-align: left;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a7466;
+  background: #f8f5ec;
+  padding: 0.65rem 0.65rem;
+  border-bottom: 1px solid #e3dccb;
+  white-space: nowrap;
+}
+
+.b5k-ref-table td {
+  padding: 0.55rem 0.65rem;
+  border-bottom: 1px solid #f0ead9;
+  color: #2b2620;
+  white-space: nowrap;
+}
+
+.b5k-ref-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.b5k-ref-table th.num,
+.b5k-ref-table td.num {
+  text-align: right;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.b5k-ref-table tr.is-me td {
+  background: #fbf3e4;
+}
+
+.b5k-ref-table td.is-iqr {
+  color: #a00000;
+  font-weight: 700;
+}
+
+.b5k-ref-table td.is-med {
+  font-weight: 700;
+  color: #111;
+}
+
+.b5k-ref-date {
+  color: #7a7466;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+
+/* ================= Responsive Mobile ================= */
+@media (max-width: 860px) {
+  .b5k-scrolly {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 1rem 0 2.5rem 0;
+  }
+
+  .b5k-graphic {
+    top: 0;
+    z-index: 15;
+    background: #fffff8;
+    padding: 0.45rem 0 0.5rem 0;
+    box-shadow: 0 8px 14px -10px rgba(40, 30, 10, 0.25);
+  }
+
+  .b5k-stage {
+    padding: 0.75rem 0.8rem 0.7rem 0.8rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(40, 30, 10, 0.08);
+  }
+
+  .b5k-stage-head {
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .b5k-kicker {
+    font-size: 0.7rem;
+  }
+
+  .b5k-title {
+    font-size: 1.08rem !important;
+  }
+
+  .b5k-metric {
+    font-size: 0.82rem;
+  }
+
+  .b5k-controls {
+    margin-bottom: 0.45rem;
+    gap: 0.25rem;
+  }
+
+  .b5k-ctrl-btn {
+    font-size: 0.72rem;
+    padding: 0.16rem 0.48rem;
+  }
+
+  .b5k-ctrl-btn.is-mono {
+    font-size: 0.68rem;
+    padding: 0.14rem 0.4rem;
+  }
+
+  .b5k-foot-row {
+    font-size: 0.74rem;
+  }
+
+  .b5k-steps {
+    padding: 3vh 0 22vh 0;
+  }
+
+  .b5k-step {
+    min-height: 55vh;
+    align-items: flex-start;
+    padding-top: 2vh;
+  }
+
+  .b5k-card {
+    background: rgba(255, 255, 248, 0.98);
+    padding: 1rem 1.15rem;
+  }
+
+  .b5k-card h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .b5k-card p {
+    font-size: 1.05rem !important;
+    line-height: 1.52 !important;
+  }
+}

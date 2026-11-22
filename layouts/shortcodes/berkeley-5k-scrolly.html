@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="{{ "css/berkeley-5k.css" | relURL }}">
+<nav class="b5k-nav" id="b5k-nav" aria-label="Jump to section"></nav>
+<div class="b5k-scrolly" id="b5k-root">
+  <div class="b5k-graphic">
+    <div class="b5k-stage">
+      <div class="b5k-stage-head">
+        <div>
+          <div class="b5k-kicker" id="b5k-kicker">Step 1 of 7</div>
+          <h2 class="b5k-title" id="b5k-title">Eleven editions, 14,621 finishes</h2>
+        </div>
+        <div class="b5k-metric" id="b5k-metric">2014 → 2026</div>
+      </div>
+
+      <div class="b5k-controls" id="b5k-controls"></div>
+
+      <div class="b5k-viz-wrap">
+        <svg class="b5k-viz" id="b5k-viz" viewBox="0 0 660 410" role="img" aria-label="Berkeley Half Marathon 5K historical timing visualization"></svg>
+      </div>
+
+      <div class="b5k-stage-foot">
+        <div class="b5k-foot-row">
+          <span id="b5k-caption">Hover any bar for finisher count, winner, and 8:30 AM weather.</span>
+          <span class="b5k-step-num" id="b5k-step-num">1 / 7</span>
+        </div>
+        <div class="b5k-progress" id="b5k-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="b5k-steps">
+    <div class="b5k-step is-active" data-step="0">
+      <div class="b5k-card">
+        <h3>1. Eleven mornings since 2014</h3>
+        <p>The Berkeley Half Marathon launched in 2013 with a half marathon, a 10-miler, and a 10K. The <strong>5K joined in November 2014</strong> with 1,104 finishers and has been run eleven times since.</p>
+        <p>Two empty slots interrupt the calendar: <strong>2018</strong> was canceled due to Camp Fire wildfire smoke, and <strong>2020</strong> fell to COVID-19. The deferred 2021 edition ran on <strong>February 27, 2022</strong>, making 2022 the only year with two Berkeley 5Ks. Turnout peaked in 2019 (1,589) after 2018 rollovers, rebuilt to 1,548 in 2024, and dipped to 1,201 in 2026 under a 100% rain forecast.</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="1">
+      <div class="b5k-card">
+        <h3>2. A remarkably steady median</h3>
+        <p>Across twelve years of shifting field sizes, the typical Berkeley 5K finisher has stayed anchored inside a <strong>1 minute 46 second band</strong>.</p>
+        <p>The fastest median was the inaugural <strong>2014 race at 34:56</strong> (with 2017 close behind at 35:07). Between 2019 and 2023, the median drifted about a minute and a half slower—peaking at <strong>36:42 in 2019</strong> and <strong>36:36 in 2023</strong>—before settling back into the mid-35s: <strong>35:32</strong> (2024), <strong>35:52</strong> (2025), and <strong>35:56</strong> (2026).</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="2">
+      <div class="b5k-card">
+        <h3>3. Min vs. max: winners and the cutoff tail</h3>
+        <p>At the very front, the course record still belongs to <strong>Dave Winnacker’s 15:33</strong> in 2015. Every winning time since has landed between <strong>16:10</strong> (2022 Nov) and <strong>17:53</strong> (2017)—and the sub-25-minute front pack actually hit an all-time high of <strong>9.4%</strong> in 2026.</p>
+        <p>At the back, the raw maximum tells a story about <em>cutoff enforcement</em> rather than fitness. Most years cap out around <strong>1:10–1:22</strong>, just past the one-hour course limit. Three editions—<strong>2014 (2:05:51)</strong>, <strong>2019 (1:45:09)</strong>, and <strong>Feb 2022 (2:11:32)</strong>—left the timing mat open longer. Use the toggle above the chart to compare the raw max against the steadier <strong>95th percentile</strong>.</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="3">
+      <div class="b5k-card">
+        <h3>4. How dispersion evolved: the right tail stretched</h3>
+        <p>The real structural shift isn’t in the median—it’s in the <strong>spread</strong>. Between 2014 and 2017, the interquartile range (IQR, middle 50%) stayed razor-tight between <strong>11:32 and 11:52</strong>.</p>
+        <p>Starting in 2019 and peaking in both 2022 races, the IQR stretched past <strong>13:58</strong>—nearly two and a half minutes wider. Crucially, the widening was <em>one-sided</em>: the 25th percentile (Q1) barely budged in twelve years (always <strong>29:35–31:01</strong>, an 86-second band), while the 75th percentile (Q3) climbed nearly four minutes from <strong>41:10</strong> to <strong>44:59</strong> as walkers and families (45+ min) grew from 15.5% to 25.0% of the field. Since 2024, the IQR has partially re-compressed to <strong>~12:35</strong>.</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="4">
+      <div class="b5k-card">
+        <h3>5. Every distribution, stacked in order</h3>
+        <p>Summary lines hide the <em>texture</em> of a race. Plotting the smooth finish-time density for every edition reveals a classic right-skewed community 5K: a sharp runner peak around <strong>30–35 minutes</strong> followed by a second shoulder of walkers beyond 45 minutes.</p>
+        <p>Watch how that shaded <strong>45+ minute tail</strong> flattens and elongates in 2019 and 2022—nearly a quarter of finishers—before pulling back slightly in 2024–2026. Hover any ridge to inspect its exact numbers.</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="5">
+      <div class="b5k-card">
+        <h3>6. Does Berkeley’s November weather move the clock?</h3>
+        <p>At the <strong>8:30 AM</strong> start in Downtown Berkeley, every single edition sits inside a remarkably runner-friendly Goldilocks window: <strong>48.0°F to 57.4°F</strong>. Because it is never truly hot, temperature shows almost no correlation with median time (<span class="b5k-mono">r = −0.11</span>).</p>
+        <p><strong>Wind</strong> lines up more closely (<span class="b5k-mono">r = +0.65</span>): the crispest, calmest modern morning—<strong>2024</strong> (48.1°F, 3.6 mph, 56% RH)—produced the fastest post-2017 median (<strong>35:32</strong>). Only <strong>2016</strong> saw steady drizzle during the 8:30–9:30 AM window, while <strong>2026</strong> was the warmest and windiest start on record (<strong>57.4°F, 11.1 mph</strong>), ahead of an afternoon storm whose 100% rain forecast trimmed turnout by 20%—leaving a faster-skewed field on the start line.</p>
+      </div>
+    </div>
+
+    <div class="b5k-step" data-step="6">
+      <div class="b5k-card">
+        <h3>7. Where I land on the curve</h3>
+        <p>I ran my first Berkeley 5K in <strong>2025</strong> in <span class="b5k-accent">34:50</span> (11:13/mi)—placing <strong>#672 of 1,502</strong>, faster than <strong>55.3%</strong> of the field (top 44.7%) and 1:02 ahead of the median.</p>
+        <p>A year later in <strong>2026</strong>, despite the warmest and windiest morning in the race’s history, I trimmed <strong>36 seconds</strong> to finish in <span class="b5k-accent">34:14</span> (11:01/mi)—<strong>#510 of 1,201</strong>, faster than <strong>57.5%</strong> of finishers (top 42.5%; #309/550 Male; #56/106 M30–39).</p>
+        <p>Use the <strong>Time Machine</strong> buttons above the chart to drop <strong>34:14</strong> into any prior edition: it beats the median in every single Berkeley 5K ever held—from the <strong>52.4th percentile</strong> in the swift inaugural 2014 field up to the <strong>61.2nd percentile</strong> in 2023.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ "js/berkeley-5k.js" | relURL }}"></script>
